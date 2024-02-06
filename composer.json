@@ -1,0 +1,19 @@
+{
+    "name": "yoweli/make-test",
+    "description": "This is a test",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yoweli Kachala",
+            "email": "yowelikachala@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
