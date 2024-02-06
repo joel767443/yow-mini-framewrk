@@ -7,12 +7,21 @@ namespace app\core;
  */
 class Application
 {
+    /**
+     * @var string
+     */
     public static string $ROOT_PATH;
     /**
      * @var Router
      */
     public Router $router;
+    /**
+     * @var Request
+     */
     public Request $request;
+    /**
+     * @var Response
+     */
     public Response $response;
     public static Application $app;
 
@@ -25,7 +34,7 @@ class Application
         self::$app = $this;
         $this->request = new Request();
         $this->response = new Response();
-        $this->router = new Router($this->request);
+        $this->router = new Router($this->request, $this->response);
     }
 
     /**
