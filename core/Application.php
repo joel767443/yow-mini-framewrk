@@ -7,6 +7,7 @@ namespace app\core;
  */
 class Application
 {
+    public static string $ROOT_PATH;
     /**
      * @var Router
      */
@@ -16,8 +17,9 @@ class Application
     /**
      * Application Constructor
      */
-    public function __construct()
+    public function __construct($rootPath)
     {
+        self::$ROOT_PATH = $rootPath;
         $this->request = new Request();
         $this->router = new Router($this->request);
     }
@@ -27,6 +29,6 @@ class Application
      */
     public function run()
     {
-        $this->router->resolve();
+        echo $this->router->resolve();
     }
 }
