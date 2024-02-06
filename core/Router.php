@@ -37,6 +37,9 @@ class Router
         $this->routes['get'][$path] = $callback;
     }
 
+    /**
+     * @return mixed|string
+     */
     public function resolve()
     {
         $path = $this->request->getPath();
@@ -44,6 +47,7 @@ class Router
         $callback = $this->routes[$method][$path] ?? false;
 
         if ($callback === false) {
+            Application::$app->response->setStatusCode(404);
             return "Not found";
         }
 
@@ -66,6 +70,9 @@ class Router
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
+    /**
+     * @return false|string
+     */
     private function layoutContent()
     {
         ob_start();
@@ -73,6 +80,10 @@ class Router
         return ob_get_clean(); // cleanup content buffer
     }
 
+    /**
+     * @param $view
+     * @return false|string
+     */
     private function renderOnlyView($view)
     {
         ob_start();
